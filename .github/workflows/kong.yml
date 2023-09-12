@@ -22,8 +22,6 @@ jobs:
       - name: config vkpr credentials
         shell: bash
         run: |
-            shopt -s expand_aliases
-            alias vkpr="rit vkpr"
             vkpr credential set --provider="aws" \
                 --fields="accesskeyid,region,secretaccesskey" \
                 --values="${{ secrets.AWS_ACCESS_KEY }},${{ secrets.AWS_REGION }},${{ secrets.AWS_SECRET_KEY }}"
@@ -43,8 +41,6 @@ jobs:
 
       - name: Vkpr apply
         run: |
-          shopt -s expand_aliases
-          alias vkpr="rit vkpr"
           aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME}} --region ${{ secrets.AWS_REGION}}
           vkpr apply --path_to_file="$(pwd)/vkpr.yaml"
 
