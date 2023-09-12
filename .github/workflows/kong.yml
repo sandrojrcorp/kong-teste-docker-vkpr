@@ -6,8 +6,7 @@ on:
 jobs:
   kong_stack:
     runs-on: ubuntu-latest
-    container:
-      image: docker://veecode/vkpr-runner:github_1.3.5
+    container: docker://veecode/vkpr-runner:github_1.3.5
     steps:
       - uses: actions/checkout@v3
 
